@@ -13,7 +13,7 @@ switch($request_method)
 //				echo json_encode($query_params);
 //				echo "<br>";
 				$i = $query_params['image'];
-				if($query_params['image'] > 3 || $query_params['image'] <= 0) {
+				if($i > 3 || $i <= 0) {
 					echo 'Nope! Bild No. '.$i.' existiert nicht!<br>';
 					break;
 				}
