@@ -8,23 +8,20 @@ switch($request_method)
 //			echo $actual_link;
 			$query_str = parse_url($actual_link, PHP_URL_QUERY);
 			parse_str($query_str, $query_params);
-			if(isset($query_params['image'])) {
+			if(isset($query_params['image']) && is_numeric($query_params['image'])) {
 //				echo "Url beinhaltet Parameter \"image\". Nice!<br>";
 //				echo json_encode($query_params);
 //				echo "<br>";
 				$i = $query_params['image'];
-
-				if(!isset($query_params['image']) || !is_numeric($query_params['image'])) {
-					echo 'Nope! Keine Bildnummer angegeben!<br>';
-					break;
-				}
 				if($query_params['image'] > 3 || $query_params['image'] <= 0) {
 					echo 'Nope! Bild No. '.$i.' existiert nicht!<br>';
 					break;
 				}
 
 				echo '<img src="/api/v1/images/'.$i.'.jpg">';
+				break;
 			}
+			echo 'Nope! Keine Bildnummer angegeben!<br>';
 			break;
 
 		default:
