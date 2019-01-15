@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrieren</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    form {
+      margin: 20px;
+    }
+    .field {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="form">
+<h1>Registrieren</h1>
+  <form enctype='application/json' action="register.php" method="post">
+      <input name="user" type="text" maxlength="100" placeholder="User123"/>
+      <input name="password" type="text" maxlength="100" placeholder="Dein Passwort."/>
+      <input name="passwordrepeat" type="text" maxlength="100" placeholder="Wiederhole dein Passwort."/>
+      <button type="submit" value="send" name="send">Absenden</button>
+    </form>
+</div>
+  <script src="js/script.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script  src="js/index.js"></script>
+  <script>
+    /* Common use case, similar to usual FormData object */
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'register.php');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(new JSONFormData(form).formData));
+      xhr.addEventListener('loadend', function() {
+        console.log();
+      }, false);
+    }, false);
+  </script>
+
+</body>
+</html>
