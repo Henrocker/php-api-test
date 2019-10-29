@@ -18,7 +18,7 @@ switch($request_method)
 					break;
 				}
 
-				echo '<img src="/api/v1/images/'.$i.'.jpg">';
+				echo '<img src="images/'.$i.'.jpg">';
 				break;
 			}
 			echo 'Nope! Keine Bildnummer angegeben!<br>';
